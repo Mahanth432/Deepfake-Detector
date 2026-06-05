@@ -1,0 +1,24 @@
+# ── Core ML / Vision ──────────────────────────────────────────────────────────
+torch
+torchvision
+transformers          # Hugging Face — google/vit-base-patch16-224-in21k
+accelerate            # Recommended companion for HF transformers
+
+# ── Image processing ──────────────────────────────────────────────────────────
+Pillow
+opencv-python
+
+# ── Data / Metrics ────────────────────────────────────────────────────────────
+numpy
+pandas
+scikit-learn
+
+# ── Backend / API ─────────────────────────────────────────────────────────────
+fastapi
+uvicorn
+python-multipart
+python-dotenv
+passlib[bcrypt]
+
+# ── Database ──────────────────────────────────────────────────────────────────
+pymongo
