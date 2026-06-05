@@ -58,6 +58,11 @@ function Analyze() {
       return;
     }
 
+    // Prevent multiple rapid clicks
+    if (loading) {
+      return;
+    }
+
     setError("");
     setLoading(true);
 
@@ -65,6 +70,10 @@ function Analyze() {
       const response = await predictImage(file);
       if (response?.status === "success") {
         setResult(response);
+        // Show duplicate message if applicable
+        if (response?.duplicate) {
+          console.info("Duplicate image detected — showing cached result");
+        }
       } else {
         setError(response?.message || "Analysis failed.");
       }

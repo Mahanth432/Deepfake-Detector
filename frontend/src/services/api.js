@@ -27,9 +27,6 @@ export function clearStoredUser() {
 
 export function getDisplayConfidence(prediction, confidenceScore) {
   const score = Number(confidenceScore ?? 0);
-  if ((prediction || "").toLowerCase() === "real") {
-    return (1 - score) * 100;
-  }
   return score * 100;
 }
 

@@ -43,14 +43,21 @@ def validate_email_config() -> tuple[bool, str]:
 
     return True, "Email configuration is valid."
 
-
 def _send_email_sync(message: MIMEMultipart):
-    """Synchronous email sending with proper error handling"""
     try:
-        # Validate config before attempting to send
         is_valid, msg = validate_email_config()
         if not is_valid:
             raise RuntimeError(f"Email service is not configured properly: {msg}")
+
+        # DEBUG
+        print("\n===== EMAIL DEBUG =====")
+        print("EMAIL_USER   =", repr(EMAIL_USER))
+        print("MAIL_FROM    =", repr(MAIL_FROM))
+        print("MAIL_SERVER  =", repr(MAIL_SERVER))
+        print("MAIL_PORT    =", repr(MAIL_PORT))
+        print("MAIL_STARTTLS=", repr(MAIL_STARTTLS))
+        print("MAIL_SSL_TLS =", repr(MAIL_SSL_TLS))
+        print("=======================\n")
 
         logger.info(f"Connecting to SMTP server: {MAIL_SERVER}:{MAIL_PORT}")
 
@@ -66,24 +73,18 @@ def _send_email_sync(message: MIMEMultipart):
             smtp.ehlo()
 
         logger.info(f"Attempting login with username: {EMAIL_USER}")
+
         smtp.login(EMAIL_USER, EMAIL_PASS)
+
         logger.info("SMTP login successful")
 
         smtp.send_message(message)
         smtp.quit()
+
         logger.info("Email sent successfully")
 
-    except smtplib.SMTPAuthenticationError as e:
-        logger.error(f"SMTP Authentication failed: {e}")
-        raise RuntimeError("Email authentication failed. Please check your Gmail App Password.")
-    except smtplib.SMTPConnectError as e:
-        logger.error(f"SMTP Connection failed: {e}")
-        raise RuntimeError("Unable to connect to email server.")
-    except smtplib.SMTPException as e:
-        logger.error(f"SMTP error: {e}")
-        raise RuntimeError(f"Email sending failed: {str(e)}")
     except Exception as e:
-        logger.error(f"Unexpected error sending email: {e}")
+        logger.exception("Email error")
         raise RuntimeError(f"Email service error: {str(e)}")
 
 

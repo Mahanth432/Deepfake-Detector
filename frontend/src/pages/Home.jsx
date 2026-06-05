@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
@@ -8,65 +8,64 @@ import {
   LucideX,
   LucideClock,
   LucideCpu,
-  LucideShield,
+  LucideDatabase,
 } from "lucide-react";
 
 const featureCards = [
   {
     id: "accuracy",
-    title: "98.9% Accuracy",
+    title: "93.12% Accuracy",
     icon: LucideBarChart2,
-    modalTitle: "98.9% Detection Accuracy",
+    modalTitle: "93.12% Detection Accuracy",
     modalItems: [
-      "Model trained using Vision Transformer (ViT)",
-      "High precision deepfake classification",
-      "Tested on real and manipulated datasets",
-      "Optimized for low false positives",
-      "Reliable confidence scoring",
+      "Vision Transformer (ViT-B/16) backbone architecture",
+      "High classification accuracy on GRAVEX-200K benchmark",
+      "Optimized for low false positive rates (94.58% Precision)",
+      "Robust class-separation boundary under varying compressions",
+      "Verified on 30,000 independent test images",
     ],
     modalIcon: LucideBarChart2,
   },
   {
     id: "speed",
-    title: "<2s Detection",
-    icon: LucideSparkles,
-    modalTitle: "Real-Time Detection",
+    title: "Efficient Inference",
+    icon: LucideClock,
+    modalTitle: "Optimized Inference Speed",
     modalItems: [
-      "Prediction generated in under 2 seconds",
-      "Fast preprocessing pipeline",
-      "Optimized PyTorch inference",
-      "Lightweight backend architecture",
-      "Instant upload-to-result workflow",
+      "Fast image preprocessing pipeline",
+      "Inference wrapper supporting standard CPU/GPU execution",
+      "Highly responsive API integration for seamless analysis",
+      "Instant upload-to-result prediction workflow",
     ],
     modalIcon: LucideClock,
   },
   {
     id: "vit",
-    title: "ViT Transformer",
-    icon: LucideBarChart2,
-    modalTitle: "Vision Transformer Architecture",
+    title: "ViT-B/16 Backbone",
+    icon: LucideCpu,
+    modalTitle: "Vision Transformer Model Details",
     modalItems: [
-      "Uses Google ViT-B/16 pretrained model",
-      "Captures global image relationships",
-      "Better than CNNs for subtle manipulations",
-      "Patch embedding + self-attention mechanism",
-      "Improved deepfake feature learning",
+      "Uses 12 transformer blocks with 12 attention heads each",
+      "Splits input images into 16x16 non-overlapping patches",
+      "Pretrained on ImageNet-21k for robust feature representations",
+      "Fine-tuned specifically on synthetic generation artifacts",
+      "Partial backbone unfreezing: last 4 blocks updated during training",
     ],
     modalIcon: LucideCpu,
   },
   {
-    id: "secure",
-    title: "Secure Analysis",
-    icon: LucideShieldCheck,
-    modalTitle: "Secure & Private Analysis",
+    id: "dataset",
+    title: "GRAVEX-200K Dataset",
+    icon: LucideDatabase,
+    modalTitle: "Dataset Composition & Splits",
     modalItems: [
-      "User-based private history",
-      "Secure MongoDB storage",
-      "Duplicate protection per account",
-      "No cross-user data exposure",
-      "Protected authentication workflow",
+      "Total dataset size of 200,000 high-resolution images",
+      "Training set: 140,000 images (70%)",
+      "Validation set: 30,000 images (15%)",
+      "Test set: 30,000 images (15%)",
+      "Covers diverse GAN, diffusion, and autoregressive models",
     ],
-    modalIcon: LucideShield,
+    modalIcon: LucideDatabase,
   },
 ];
 
@@ -98,14 +97,14 @@ function Home() {
           animate="visible"
         >
           <h1>
-            Detect AI Manipulation.
+            AI-Generated Image Detection.
             <br />
-            Protect Digital Truth.
+            Powered by Vision Transformers.
           </h1>
 
           <p>
-            Advanced Vision Transformer powered deepfake detection
-            with real-time AI analysis.
+            Deploying a fine-tuned ViT-B/16 model trained on the GRAVEX-200K dataset,
+            achieving a verified 93.12% test accuracy in identifying AI-generated manipulations.
           </p>
 
           <div className="hero-buttons hero-actions">
@@ -148,11 +147,11 @@ function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.15 }}
           >
-            <LucideSparkles size={40} />
-            <h3>Vision Transformer Detection</h3>
+            <LucideCpu size={40} />
+            <h3>ViT-B/16 Self-Attention</h3>
             <p>
-              State-of-the-art ViT model identifies deepfakes with
-              precision.
+              Utilizes multi-head self-attention mechanisms to map global image patches
+              and detect subtle, non-local synthetic artifacts.
             </p>
           </motion.div>
 
@@ -162,9 +161,12 @@ function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.25 }}
           >
-            <LucideBarChart2 size={40} />
-            <h3>Real-time AI Analysis</h3>
-            <p>Instant predictions delivered in under two seconds.</p>
+            <LucideDatabase size={40} />
+            <h3>GRAVEX-200K Benchmark</h3>
+            <p>
+              Trained on 200,000 diverse images featuring advanced GAN, diffusion, and
+              transformer-based generator architectures.
+            </p>
           </motion.div>
 
           <motion.div
@@ -173,9 +175,129 @@ function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.35 }}
           >
-            <LucideShieldCheck size={40} />
-            <h3>Secure Detection History</h3>
-            <p>Your analyses are stored safely and privately.</p>
+            <LucideSparkles size={40} />
+            <h3>Transfer & Fine-Tuning</h3>
+            <p>
+              Leverages pre-trained representation capabilities while unfreezing the last 
+              4 transformer blocks for precise domain adaptation.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="model-insights-section">
+        <div className="insights-header">
+          <h2>Technical Specifications & Performance Evaluation</h2>
+          <p>Detailed architectural configuration and verified test metrics from the GRAVEX-200K evaluation.</p>
+        </div>
+
+        <div className="insights-grid">
+          <motion.div
+            className="card insight-card"
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <h3>Model Details & Hyperparameters</h3>
+            <div className="details-list">
+              <div className="detail-row">
+                <span className="detail-label">Model Architecture</span>
+                <span className="detail-value">Vision Transformer (ViT-B/16)</span>
+              </div>
+              <div className="detail-row">
+                <span className="detail-label">Pre-trained Dataset</span>
+                <span className="detail-value">ImageNet-21k (14M images)</span>
+              </div>
+              <div className="detail-row">
+                <span className="detail-label">Target Dataset</span>
+                <span className="detail-value">GRAVEX-200K (200,000 images)</span>
+              </div>
+              <div className="detail-row">
+                <span className="detail-label">Training Size</span>
+                <span className="detail-value">140,000 Images</span>
+              </div>
+              <div className="detail-row">
+                <span className="detail-label">Validation Size</span>
+                <span className="detail-value">30,000 Images</span>
+              </div>
+              <div className="detail-row">
+                <span className="detail-label">Test Size</span>
+                <span className="detail-value">30,000 Images</span>
+              </div>
+              <div className="detail-row">
+                <span className="detail-label">Adaptation Method</span>
+                <span className="detail-value">Transfer Learning + Fine-Tuning</span>
+              </div>
+              <div className="detail-row">
+                <span className="detail-label">Unfrozen Backbone</span>
+                <span className="detail-value">Last 4 Transformer Blocks</span>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="card insight-card"
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <h3>Verified Test Evaluation Metrics</h3>
+            <div className="metrics-wrapper">
+              <div className="metric-progress-item">
+                <div className="metric-progress-header">
+                  <span className="metric-title">Accuracy</span>
+                  <span className="metric-pct">93.12%</span>
+                </div>
+                <div className="metric-progress-track">
+                  <div className="metric-progress-fill accent-blue" style={{ width: "93.12%" }} />
+                </div>
+                <p className="metric-desc">Overall correctness rate on 30,000 independent test images.</p>
+              </div>
+
+              <div className="metric-progress-item">
+                <div className="metric-progress-header">
+                  <span className="metric-title">Precision</span>
+                  <span className="metric-pct">94.58%</span>
+                </div>
+                <div className="metric-progress-track">
+                  <div className="metric-progress-fill accent-purple" style={{ width: "94.58%" }} />
+                </div>
+                <p className="metric-desc">Accuracy of positive predictions; measures the model's resistance to false alarms.</p>
+              </div>
+
+              <div className="metric-progress-item">
+                <div className="metric-progress-header">
+                  <span className="metric-title">Recall (Sensitivity)</span>
+                  <span className="metric-pct">91.47%</span>
+                </div>
+                <div className="metric-progress-track">
+                  <div className="metric-progress-fill accent-teal" style={{ width: "91.47%" }} />
+                </div>
+                <p className="metric-desc">Percentage of actual AI manipulations correctly identified by the model.</p>
+              </div>
+
+              <div className="metric-progress-item">
+                <div className="metric-progress-header">
+                  <span className="metric-title">F1 Score</span>
+                  <span className="metric-pct">93.00%</span>
+                </div>
+                <div className="metric-progress-track">
+                  <div className="metric-progress-fill accent-pink" style={{ width: "93.00%" }} />
+                </div>
+                <p className="metric-desc">Harmonic mean of precision and recall, balancing classification quality.</p>
+              </div>
+
+              <div className="metric-progress-item">
+                <div className="metric-progress-header">
+                  <span className="metric-title">ROC-AUC</span>
+                  <span className="metric-pct">0.9874</span>
+                </div>
+                <div className="metric-progress-track">
+                  <div className="metric-progress-fill accent-indigo" style={{ width: "98.74%" }} />
+                </div>
+                <p className="metric-desc">Area Under the ROC Curve; evaluates discrimination capability across all thresholds.</p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
