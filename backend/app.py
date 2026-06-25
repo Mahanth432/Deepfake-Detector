@@ -19,14 +19,10 @@ try:
 except ImportError:
     EmailStr = str
 
-# ── Environment ──────────────────────────────────────────────────────
+# Load environment variables from dotenv.
+# This will load .env from current/parent folders.
 load_dotenv()
-backend_env = os.path.join(os.path.dirname(__file__), ".env")
-if os.path.exists(backend_env):
-    load_dotenv(backend_env)
-    print(f"Loaded backend env: {backend_env}")
-else:
-    print("backend/.env not found, using root .env")
+
 
 # ── Logging ──────────────────────────────────────────────────────────
 logging.basicConfig(

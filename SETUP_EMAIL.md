@@ -41,24 +41,18 @@ You need a Google account with:
 
 1. Open `.env` file in your project root:
    ```
-   c:\Users\nagan\OneDrive\Desktop\deepfake-detection-vit\.env
+   c:\Users\your-username\your-project-path\.env
    ```
 
 2. Fill in the email credentials:
-   ```
-   EMAIL_USER=your-gmail-address@gmail.com
-   EMAIL_PASS=xxxx-xxxx-xxxx-xxxx
-   ```
-
-   Example:
-   ```
-   EMAIL_USER=john.doe@gmail.com
-   EMAIL_PASS=abcd efgh ijkl mnop
+   ```bash
+   EMAIL_USER=your_email@gmail.com
+   EMAIL_PASS=your_app_password
    ```
 
-   **Notes:**
+3. **Check the format**:
    - `EMAIL_USER`: Your full Gmail address
-   - `EMAIL_PASS`: The 16-character App Password (without or with spaces - both work)
+   - `EMAIL_PASS`: The 16-character App Password (without spaces)
    - Leave `MAIL_FROM` blank for auto-configuration
 
 3. Save the `.env` file

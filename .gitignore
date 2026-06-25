@@ -1,0 +1,67 @@
+# ========================
+# Environment & Secrets
+# ========================
+.env
+*.env
+
+# ========================
+# Python
+# ========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.Python
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+
+# ========================
+# Large Data & Models
+# ========================
+datasets/
+models/*.pth
+models/*.pt
+models/*.bin
+models/*.safetensors
+uploads/
+
+# ========================
+# Jupyter Notebooks checkpoints
+# ========================
+.ipynb_checkpoints/
+
+# ========================
+# IDEs & Editors
+# ========================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ========================
+# OS Files
+# ========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ========================
+# Logs
+# ========================
+*.log
+logs/
+
+# Extra ignores
+backend/.env
+node_modules/

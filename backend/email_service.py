@@ -9,10 +9,7 @@ from dotenv import load_dotenv
 
 base_dir = os.path.dirname(__file__)
 load_dotenv()
-backend_env = os.path.join(base_dir, '.env')
-if os.path.exists(backend_env):
-    load_dotenv(backend_env)
-    print(f"Loading backend email environment from: {backend_env}")
+
 
 logger = logging.getLogger(__name__)
 
@@ -38,7 +35,7 @@ def validate_email_config() -> tuple[bool, str]:
             False,
             "Missing required environment variables: "
             + ", ".join(missing_vars)
-            + ". Please create backend/.env with EMAIL_USER and EMAIL_PASS."
+            + ". Please configure EMAIL_USER and EMAIL_PASS."
         )
 
     return True, "Email configuration is valid."
@@ -47,7 +44,9 @@ def _send_email_sync(message: MIMEMultipart):
     try:
         is_valid, msg = validate_email_config()
         if not is_valid:
-            raise RuntimeError(f"Email service is not configured properly: {msg}")
+            logger.warning(f"Skipping email delivery: {msg}")
+            return
+
 
         # DEBUG
         print("\n===== EMAIL DEBUG =====")
